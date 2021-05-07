@@ -31,6 +31,7 @@ export default function renderApplication<Props: Object>(
 
   invariant(rootTag, 'Expect to have a valid rootTag, instead got ', rootTag);
 
+  // test
   renderFn(
     <AppContainer WrapperComponent={WrapperComponent} rootTag={rootTag}>
       <RootComponent {...initialProps} />
