@@ -62,7 +62,7 @@ export default class AppRegistry {
     return runnables[appKey].getApplication(appParameters);
   }
 
-  static registerComponent(appKey: string, componentProvider: ComponentProvider): string {
+  static: string {
     runnables[appKey] = {
       getApplication: (appParameters) =>
         getApplication(
@@ -122,7 +122,7 @@ export default class AppRegistry {
         'This is either due to an import error during initialization or failure to call AppRegistry.registerComponent.'
     );
 
-    runnables[appKey].run(appParameters);
+    return runnables[appKey].run(appParameters);
   }
 
   static setComponentProviderInstrumentationHook(hook: ComponentProviderInstrumentationHook) {

@@ -9,7 +9,7 @@
  */
 
 import type { ComponentType, Node } from 'react';
-
+import ReactDOM from 'react-dom';
 import AppContainer from './AppContainer';
 import invariant from 'fbjs/lib/invariant';
 import render, { hydrate } from '../render';
@@ -32,13 +32,14 @@ export default function renderApplication<Props: Object>(
   invariant(rootTag, 'Expect to have a valid rootTag, instead got ', rootTag);
 
   // test
-  renderFn(
-    <AppContainer WrapperComponent={WrapperComponent} rootTag={rootTag}>
-      <RootComponent {...initialProps} />
-    </AppContainer>,
-    rootTag,
-    callback
-  );
+
+  const HeaderPortal = ReactDOM.createPortal(
+  <AppContainer WrapperComponent={WrapperComponent} rootTag={'portal'}>
+    <RootComponent {...initialProps} />
+  </AppContainer>, document.getElementById('portal'))
+
+
+  return HeaderPortal;
 }
 
 export function getApplication(
